@@ -1,0 +1,12 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: production-apps
+  namespace: flux-system
+spec:
+  interval: 5m0s
+  path: ./apps/overlays/production
+  prune: true # Deletes resources from the cluster if you delete them from Git
+  sourceRef:
+    kind: GitRepository
+    name: flux-system # Uses the Git connection Flux made during bootstrap
