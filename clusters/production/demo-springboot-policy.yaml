@@ -1,0 +1,12 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImagePolicy
+metadata:
+  name: demo-springboot
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: demo-springboot
+  policy:
+    numerical:
+      order: asc

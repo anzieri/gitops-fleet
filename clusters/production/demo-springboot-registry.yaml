@@ -1,0 +1,9 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImageRepository
+metadata:
+  name: demo-springboot
+  namespace: flux-system
+spec:
+  image: anzieri/demo-springboot
+  interval: 1m0s
