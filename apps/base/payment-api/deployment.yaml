@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: demo-springboot
+  name: demo-springboot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-springboot
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: demo-springboot
+    spec:
+      containers:
+      - image: anzieri/demo-springboot:latest
+        name: demo-springboot
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "prod"
+        resources: {}
+status: {}

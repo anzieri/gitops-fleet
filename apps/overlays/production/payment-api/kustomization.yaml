@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# 1. Start with the base configurations
+resources:
+  - ../../../base/payment-api
+
+# 2. Apply the production-specific patches
+patches:
+  - path: patch-replicas.yaml
+  - path: patch-resources.yaml
+
+# 3. Inject common labels for the whole environment
+commonLabels:
+  env: production
+
+# 4. Set the exact Docker image tag deployed to production
+images:
+  - name: anzieri/payment-api # The image name in your base deployment
+    newName: anzieri/payment-api
+    newTag: v1.2.4 # Flux or your CI/CD will update this line!
